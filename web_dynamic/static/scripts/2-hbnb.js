@@ -23,13 +23,13 @@ function change () {
   if (this.checked) {
     addAmenitiesToArray(name);
   } else {
-      deleteAmenitiesToArray(name);
+    deleteAmenitiesToArray(name);
   }
   addAmenitiesHtml(amenitiesSelect);
 }
 
 function requestDone (data) {
-  if (data.status == 'OK') {
+  if (data.status === 'OK') {
     $('#api_status').addClass('available');
   }
 }
@@ -39,22 +39,22 @@ function handlerError (jqXHR, textStatus, errorThrown) {
 }
 
 function requestStatusApi () {
-  let request = {
-    url : 'http://192.168.33.100:5001/api/v1/status/'
-  }
-  
-  let r = $.ajax(request);
+  const request = {
+    url: 'http://192.168.33.100:5001/api/v1/status/'
+  };
+
+  const r = $.ajax(request);
   r.done(requestDone);
   r.fail(handlerError);
-} 
+}
 
 function init () {
   $('DIV.amenities .popover LI input').on('change', change);
-  
+
   requestStatusApi();
 
-  setInterval(function(){ 
-    requestStatusApi(); 
+  setInterval(function () {
+    requestStatusApi();
   }, 5000);
 }
 
