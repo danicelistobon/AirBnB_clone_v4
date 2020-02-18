@@ -1,8 +1,25 @@
-<img src="https://github.com/jarehec/AirBnB_clone_v3/blob/master/dev/HBTN-hbnb-Final.png" width="160" height=auto />
+# :triangular_flag_on_post: Holberton B&B
 
-# AirBnB Clone: Phase # 3
+<img align="center" src="https://i.ibb.co/d5N85Nh/hbnb.png" width="100%">
 
-: API with Swagger
+### Welcome to the AirBnB clone project! (Holberton B&B)
+
+After 4 months, we have a complete web application composed by:
+
+- A command interpreter to manipulate data without a visual interface, like in a Shell (perfect for development and debugging)
+- A website (the front-end) that shows the final product to everybody: static and dynamic
+- A database or files that store data (data = objects)
+- An API that provides a communication interface between the front-end and your data (retrieve, create, delete, update them)
+
+## Final product
+
+<img align="center" src="https://s3.amazonaws.com/intranet-projects-files/holbertonschool-higher-level_programming+/268/8-index.png" width="100%">
+
+<img align="center" src="https://s3.amazonaws.com/intranet-projects-files/holbertonschool-higher-level_programming+/268/100-index.png" width="100%">
+
+## Data diagram
+
+<img align="center" src="https://s3.amazonaws.com/intranet-projects-files/holbertonschool-higher-level_programming+/289/AirBnb_DB_diagramm.jpg" width="100%">
 
 ## Description
 
@@ -32,6 +49,68 @@ HBNB_MYSQL_HOST=localhost HBNB_MYSQL_DB=hbnb_test_db HBNB_TYPE_STORAGE=db \
 [COMMAND HERE]
 ```
 
+### Installation
+* Clone this repository: `git clone https://github.com/guxal/AirBnB_clone_v4.git`
+* Access AirBnb directory: `cd AirBnB_clone`
+* Run hbnb(interactively): `./console` and enter command
+* Run hbnb(non-interactively): `echo "<command>" | ./console.py`
+
+### Whats a command interpreter?
+
+Do you remember the Shell? Its exactly the same but limited to a specific use-case. In our case, we want to be able to manage the objects of our project:
+
+- Create a new object (ex: a new User or a new Place)
+- Retrieve an object from a file, a database etc
+- Do operations on objects (count, compute stats, etc)
+- Update attributes of an object
+- Destroy an object
+
+### HBNBCommand
+
+This is the console (command interpreter) for the Holberton Airbnb clone project. The console can be used to store objects in and retrieve objects from a JSON.
+
+Supported classes:
+- BaseModel
+- User
+- State
+- City
+- Amenity
+- Place
+- Review
+
+### Commands
+
+These are some of the commands implemented in our console (HBNBCommand):
+
+| Command | Description |
+| ------ | ------ |
+| all | Prints all string representation of all instances based or not on the class name |
+| create | Creates a new instance of class name, saves it (to the JSON file) and prints the id |
+| destroy | Deletes an instance based on the class name and id (save the change into the JSON file) |
+| help | List available commands with "help" or detailed help with "help cmd" |
+| quit - EOF | Commands to exit the program |
+| show | Prints the string representation of an instance based on the class name and id |
+| update | Updates an instance based on the class name and id by adding or updating attribute (save the change into the JSON file) |
+
+To start, navigate to the project folder and enter `./console.py` in the shell.
+
+| Examples of how to use the commands |
+| ------ |
+| Create: |
+| `create <class name>` Ex: `create BaseModel` |
+| Show: |
+| `show <class name> <object id>` Ex: `show User my_id` |
+| Destroy: |
+| `destroy <class name> <object id>` Ex: `destroy Place my_place_id` |
+| All: |
+| `all` or `all <class name>` Ex: `all` or `all State` |
+| Quit: |
+| `quit` or `EOF (Ctrl-d)` |
+| Help: |
+| `help` or `help <command>` Ex: `help` or `help all` |
+| Additionally, the console supports: |
+| `<class name>.<command>(<parameters>)` syntax. Ex: `City.show(my_city_id)` |
+
 ## Environment
 
 * __OS:__ Ubuntu 14.04 LTS
@@ -46,7 +125,7 @@ HBNB_MYSQL_HOST=localhost HBNB_MYSQL_DB=hbnb_test_db HBNB_TYPE_STORAGE=db \
   * __web static:__ [W3C Validator](https://validator.w3.org/)
   * __bash:__ ShellCheck 0.3.3
 
-<img src="https://github.com/jarehec/AirBnB_clone_v3/blob/master/dev/hbnb_step5.png" />
+<img align="center" src="https://github.com/jarehec/AirBnB_clone_v3/blob/master/dev/hbnb_step5.png" width="100%">
 
 ## Configuration Files
 
@@ -217,6 +296,9 @@ github repo
 * Kimberly Wong, [kjowong](https://github.com/kjowong) | [@kjowong](https://twitter.com/kjowong) | [kjowong@gmail.com](kjowong@gmail.com)
 * Carrie Ybay, [hicarrie](https://github.com/hicarrie) | [@hicarrie_](https://twitter.com/hicarrie_)
 * Jared Heck, [jarehec](https://github.com/jarehec) | [@jarehec](https://twitter.com/jarehec)
+* Jonathan Cardenas Pabon | [Github](https://github.com/guxal) | [Twitter](https://twitter.com/bitcoincucuta)
+* Daniel Celis Tobon | [Github](https://github.com/danicelistobon) | [Twitter](https://twitter.com/danicelistobon)
+
 
 ## License
 
