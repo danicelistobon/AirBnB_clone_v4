@@ -10,7 +10,7 @@
 
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   
-    <script type="text/javascript" src="{{ url_for('static', filename='scripts/4-hbnb.js') ~ "?" ~ cache_id }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='scripts/100-hbnb.js') ~ "?" ~ cache_id }}"></script>
     <!-- FAVICON -->
     
     <link rel="shortcut icon" href="{{ url_for('static', filename='images/icon.png') }}">
@@ -25,6 +25,9 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/6-filters.css') ~ "?" ~ cache_id }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/8-places.css') ~ "?" ~ cache_id }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/font-awesome.css') ~ "?" ~ cache_id }}">
+    <script>
+      const users = {{users | tojson}} ; 
+    </script>
   </head>
 
   <!-- **********************
@@ -60,10 +63,10 @@
 	    <h4>&nbsp;</h4>
 	    <ul class="popover">
 	      {% for state in states|dictsort %}
-	      <H2>{{ state[0] }}</H2>
+        <H2><INPUT type="checkbox" data-id="{{state[1].id}}" data-name="{{state[1].name}}" />{{ state[0] }}</H2>
 	      <UL>
 		{% for city in state[1].cities|sort(attribute='name') %}
-		<LI>{{ city.name }}</LI>
+    <LI><INPUT type="checkbox" data-id="{{city.id}}" data-name="{{city.name}}"/>{{ city.name }}</LI>
 		{% endfor %}
 	      </UL>
 	      {% endfor %}

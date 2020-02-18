@@ -1,32 +1,33 @@
-const amens = [];
 
-function addAmensHtml (amens) {
-  $('DIV.amenities h4').text(amens.join(', '));
+const amenitiesSelect = [];
+
+function addAmenitiesHtml (array) {
+  $('DIV.amenities h4').text(array.join(', '));
 }
 
-function addAmens (name) {
-  amens.push(name);
+function addAmenitiesToArray (name) {
+  amenitiesSelect.push(name);
 }
 
-function deleteAmens (name) {
-  for (let i = 0; i < amens.length; i++) {
-    if (amens[i] === name) {
-      amens.splice(i, 1);
+function deleteAmenitiesToArray (name) {
+  for (let i = 0; i < amenitiesSelect.length; i++) {
+    if (amenitiesSelect[i] === name) {
+      amenitiesSelect.splice(i, 1);
     }
   }
 }
 
 function init () {
-  $('DIV.amenities .popover LI input').change(function () {
+  $('DIV.amenities .popover LI input').on('change', function () {
     const name = $(this).data('name');
 
     if (this.checked) {
-      addAmens(name);
+      addAmenitiesToArray(name);
     } else {
-      deleteAmens(name);
+      deleteAmenitiesToArray(name);
     }
 
-    addAmensHtml(amens);
+    addAmenitiesHtml(amenitiesSelect);
   });
 }
 

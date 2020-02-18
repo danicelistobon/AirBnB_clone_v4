@@ -1,10 +1,15 @@
 
 const amenitiesSelect = [];
 const amenitiesId = [];
+const citiesSelect = [];
+const citiesId = [];
+const statesSelect = [];
+const statesId = [];
 
 const url = 'http://192.168.33.100:5001/api/v1/';
 
 function placeHtml (place) {
+  console.log(place);
   const html = [
     '<article>',
     '<div class="title">',
@@ -31,7 +36,7 @@ function placeHtml (place) {
           '</div>',
           '</div>',
           '<div class="user">',
-          '<strong>Owner: </strong>',
+          '<strong>Owner: ' + users[place.user_id] + '</strong>',
           '</div>',
           '<div class="description">',
         `${place.description}`,
@@ -42,6 +47,7 @@ function placeHtml (place) {
   return html.join('');
 }
 
+// ---------------------------------------------
 function addAmenitiesHtml (array) {
   $('DIV.amenities h4').text(array.join(', '));
 }
@@ -61,6 +67,45 @@ function deleteAmenitiesToArray (name, id) {
     }
   }
 }
+// ----------------------------------------------
+
+function addStatesAndCitiesToHtml (states, cities) {
+  $('DIV.locations h4').text(states.concat(cities).sort().join(', '));
+}
+
+function addStatesToArray (name, id) {
+  statesSelect.push(name);
+  statesId.push(id);
+}
+
+function deleteStatesToArray (name, id) {
+  for (let i = 0; i < statesSelect.length; i++) {
+    if (statesSelect[i] === name) {
+      statesSelect.splice(i, 1);
+    }
+    if (statesId[i] === id) {
+      statesId.splice(i, 1);
+    }
+  }
+}
+// ------------------------------------------------
+
+function addCitiesToArray (name, id) {
+  citiesSelect.push(name);
+  citiesId.push(id);
+}
+
+function deleteCitiesToArray (name, id) {
+  for (let i = 0; i < citiesSelect.length; i++) {
+    if (citiesSelect[i] === name) {
+      citiesSelect.splice(i, 1);
+    }
+    if (citiesId[i] === id) {
+      citiesId.splice(i, 1);
+    }
+  }
+}
+// ------------------------------------------------
 
 function change () {
   const name = $(this).data('name');
@@ -74,6 +119,31 @@ function change () {
   addAmenitiesHtml(amenitiesSelect);
 }
 
+function changeState () {
+  const name = $(this).data('name');
+  const id = $(this).data('id');
+
+  if (this.checked) {
+    addStatesToArray(name, id);
+  } else {
+    deleteStatesToArray(name, id);
+  }
+  addStatesAndCitiesToHtml(statesSelect, citiesSelect);
+}
+
+function changeCity () {
+  const name = $(this).data('name');
+  const id = $(this).data('id');
+
+  if (this.checked) {
+    addCitiesToArray(name, id);
+  } else {
+    deleteCitiesToArray(name, id);
+  }
+  addStatesAndCitiesToHtml(statesSelect, citiesSelect);
+}
+
+// -----------------------------------------------
 function requestDone (data) {
   if (data.status === 'OK') {
     $('#api_status').addClass('available');
@@ -119,7 +189,9 @@ function requestPlaces () {
 
 function search () {
   const data = {
-    amenities: amenitiesId
+    amenities: amenitiesId,
+    states: statesId,
+    cities: citiesId
   };
 
   const request = {
@@ -139,6 +211,11 @@ function search () {
 
 function init () {
   $('DIV.amenities .popover LI input').on('change', change);
+  // states
+  $('DIV.locations .popover H2 input').on('change', changeState);
+  // cities
+  $('DIV.locations .popover LI input').on('change', changeCity);
+
   $('SECTION.filters BUTTON').click(search);
 
   requestStatusApi();
