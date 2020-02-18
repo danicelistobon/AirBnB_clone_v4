@@ -17,10 +17,6 @@ After 4 months, we have a complete web application composed by:
 
 <img align="center" src="https://s3.amazonaws.com/intranet-projects-files/holbertonschool-higher-level_programming+/268/100-index.png" width="100%">
 
-## Data diagram
-
-<img align="center" src="https://s3.amazonaws.com/intranet-projects-files/holbertonschool-higher-level_programming+/289/AirBnb_DB_diagramm.jpg" width="100%">
-
 ## Description
 
 Project attempts to clone the the AirBnB application and website, including the
@@ -77,6 +73,10 @@ Supported classes:
 - Amenity
 - Place
 - Review
+
+## Data diagram
+
+<img align="center" src="https://s3.amazonaws.com/intranet-projects-files/holbertonschool-higher-level_programming+/289/AirBnb_DB_diagramm.jpg" width="100%">
 
 ### Commands
 
