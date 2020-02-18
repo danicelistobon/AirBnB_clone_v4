@@ -9,6 +9,7 @@ const statesId = [];
 const url = 'http://192.168.33.100:5001/api/v1/';
 
 function placeHtml (place) {
+  console.log(place);
   const html = [
     '<article>',
     '<div class="title">',
@@ -35,7 +36,7 @@ function placeHtml (place) {
           '</div>',
           '</div>',
           '<div class="user">',
-          '<strong>Owner: </strong>',
+          '<strong>Owner: ' + users[place.user_id] + '</strong>',
           '</div>',
           '<div class="description">',
         `${place.description}`,
